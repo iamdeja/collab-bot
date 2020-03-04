@@ -1,4 +1,4 @@
-module.exports = {
+export const command = {
   name: "ping",
   category: "info",
   description: "Returns latency and API ping",
@@ -7,7 +7,7 @@ module.exports = {
     await msg.edit(
       `🏓 Pong!\nLatency is ${msg.createdTimestamp -
         message.createdTimestamp}ms. API Latency is ${Math.round(
-        await client.ping
+        client.ws.ping
       )}ms`
     );
   }

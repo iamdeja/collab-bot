@@ -1,8 +1,9 @@
 // Requirement Files
-const dotenv = require("dotenv");
-const { readdirSync } = require("fs");
-const { Client, Collection } = require("discord.js");
-const { prefix } = require("./config.json");
+import dotenv from "dotenv";
+import { readdirSync, readFileSync } from "fs";
+import Discord from "discord.js";
+
+const { Client, Collection } = Discord; // outdated Discord.js node workaround
 
 dotenv.config(); // configures the environment variables
 
@@ -12,22 +13,27 @@ yuuto.commands = new Collection();
 yuuto.aliases = new Collection();
 yuuto.cooldowns = new Collection();
 
-// Load command files
-const commandsFiles = readdirSync("./commands/").filter(file =>
-  file.endsWith(".js")
-);
+yuuto.once("ready", async () => {
+  // Load command files
+  const commandsFiles = readdirSync("./commands/").filter(file =>
+    file.endsWith(".js")
+  );
+  // Load commands
+  for (const file of commandsFiles) {
+    // eslint-disable-next-line no-await-in-loop
+    const { command } = await import(`./commands/${file}`);
+    yuuto.commands.set(command.name, command);
 
-// Load the commands
-for (const file of commandsFiles) {
-  const command = require(`./commands/${file}`);
-  yuuto.commands.set(command.name, command);
+    if (command.aliases && Array.isArray(command.aliases))
+      command.aliases.forEach(alias => yuuto.aliases.set(alias, command.name));
+  }
+});
 
-  if (command.aliases && Array.isArray(command.aliases))
-    command.aliases.forEach(alias => yuuto.aliases.set(alias, command.name));
-}
+// Load the prefix | cannot import from json without node flag at the time of 13.9.0
+const { prefix } = JSON.parse(readFileSync("./config.json", "utf-8")) || "!";
 
 // Initialise the bot's startup
-yuuto.on("ready", () => {
+yuuto.once("ready", () => {
   console.log(`Hi, ${yuuto.user.username} is now online!`);
 
   yuuto.user.setPresence({
@@ -40,7 +46,7 @@ yuuto.on("ready", () => {
 });
 
 yuuto.on("message", async message => {
-  if (message.channel.id === "684447764259668072") yuuto.destroy(); // test server purposes
+  if (message.channel.id === "684447764259668072") yuuto.destroy(); // administrative purposes
   if (message.author.bot || !message.guild) return;
   if (!message.content.startsWith(prefix)) return;
 
