@@ -99,7 +99,7 @@ Work can continue on the _develop_ branch and other branches while _release_ is 
 
 The _develop_ branch is the main development branch of Yuuto and the one that BeachBall is running. When code is pushed to this branch BeachBall will automatically update itself to run it. While there are no restrictions to pushes to _develop_, this automatic updating should be kept in mind, as only the maintainers have access to the bot should a fatal error occur.
 
-> **Note:** BeachBall is configured to restart itself if possible, thus permanent crashes are unlikely, however depending on the severity of the issue or configuration mistake, permanent crashes may still occur.
+> **Note:** BeachBall is configured to restart itself if possible and thus permanent crashes are unlikely. However, depending on the severity of the issue or configuration mistake, permanent crashes may still occur.
 
 New features shouldn't be committed to this branch directly, and merges with _feature_ should be used instead. Direct commits should only update code quality updates, and features should be merged to _develop_ only when they are already fairly stable.
 
