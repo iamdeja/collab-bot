@@ -2,6 +2,22 @@
 
 Yuuto bot is meant to be a collaboration of the [Official Camp Buddy Fan Server](https://discord.gg/hh2xDTV) members, completely community driven and open source. The bot's idea came from an increasing number of tech-oriented campers asking to see or contribute to _Super Hiro_ (the server's custom administrative bot).
 
+> **Note:** to start working on the bot, do not clone _master_, but _develop_ instead (read [git flow](#git-flow)).
+
+You can clone the _develop_ branch with:
+
+```bash
+$ git clone -b develop --single-branch https://github.com/iamdeja/yuuto-bot.git
+```
+
+or
+
+```bash
+$ git clone -b develop --single-branch git@github.com:iamdeja/yuuto-bot.git
+```
+
+The first one clones over HTTPS, the second one over SSH, thus requiring you to set up a key. Either command will clone the _develop_ branch __only__.
+
 ## Contents <!-- omit in toc -->
 
 - [Project Setup](#project-setup)
@@ -67,7 +83,7 @@ The development server is split into different categories, which are:
 
 ### Testing channels
 
-Testing channels are categorised based on the project branch they should be used in conjunction with (more detail in [Git flow](#git-flow)).
+Testing channels are categorised based on the project branch they should be used in conjunction with (more detail in [git flow](#git-flow)).
 
 - release-testing: will only be activated to give a final test to the bot before the code is deployed
 - development-testing: general testing of the code in the _develop_ branch
