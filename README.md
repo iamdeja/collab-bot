@@ -1,22 +1,25 @@
 # yuuto-bot <!-- omit in toc -->
 
-Yuuto bot is meant to be a collaboration of the [Official Camp Buddy Fan Server](https://discord.gg/hh2xDTV) members, completely community driven and open source. The bot's idea came from an increasing number of tech-oriented campers asking to see or contribute to _Super Hiro_ (the server's custom administrative bot).
+_If you are interested in joining the project as a developer, please take the time to read through at least the [git flow](#git-flow) section._
 
-> **Note:** to start working on the bot, do not clone _master_, but _develop_ instead (read [git flow](#git-flow)).
+Yuuto bot is meant to be a collaboration of the [Official Camp Buddy Fan Server](https://discord.gg/hh2xDTV) members, completely community driven and open source. The bot's idea came from an increasing number of tech-oriented campers asking to see or contribute to _Super Hiro_ (the server's custom administrative bot).  
+The following documentation contains information about the whole collaborative process, as well as guidelines for developers to get everyone started from the same base. For any questions that may arise, join the [development server](https://discord.gg/fPFbV8G) or ping _Dé-Jà-Vu#1004_ in the CB server.
+
+> **Note:** to start working on the bot, do not clone _master_, clone _develop_ instead. (read: [git flow](#git-flow))
 
 You can clone the _develop_ branch with:
 
 ```bash
-$ git clone -b develop --single-branch https://github.com/iamdeja/yuuto-bot.git
+git clone -b develop --single-branch https://github.com/iamdeja/yuuto-bot.git
 ```
 
 or
 
 ```bash
-$ git clone -b develop --single-branch git@github.com:iamdeja/yuuto-bot.git
+git clone -b develop --single-branch git@github.com:iamdeja/yuuto-bot.git
 ```
 
-The first one clones over HTTPS, the second one over SSH, thus requiring you to set up a key. Either command will clone the _develop_ branch __only__.
+The first command clones over HTTPS, the second one over SSH, thus requiring you to set up a key. Either command will clone the _develop_ branch **only**.
 
 ## Contents <!-- omit in toc -->
 
@@ -113,17 +116,15 @@ Work can continue on the _develop_ branch and other branches while _release_ is 
 
 ### Develop branch - BeachBall
 
-The _develop_ branch is the main development branch of Yuuto and the one that BeachBall is running. When code is pushed to this branch BeachBall will automatically update itself to run it. While there are no restrictions to pushes to _develop_, this automatic updating should be kept in mind, as only the maintainers have access to the bot should a fatal error occur.
+The _develop_ branch is the main development branch of Yuuto and the one that BeachBall is running. It is also the branch you should clone when you first join the project, as _feature_ branches will be based off it. When code is merged to this branch, BeachBall will automatically update itself to run it. Why merged? Because much like _master_, _develop_ gets updated by merges via pull requests. Force pushes to the development branch are possible, however they should be used only to update already existing core bot files in cases of important patches.
 
-> **Note:** BeachBall is configured to restart itself if possible and thus permanent crashes are unlikely. However, depending on the severity of the issue or configuration mistake, permanent crashes may still occur.
-
-New features shouldn't be committed to this branch directly, and merges with _feature_ should be used instead. Direct commits should only update code quality updates, and features should be merged to _develop_ only when they are already fairly stable.
+> **Note:** BeachBall is configured to restart itself if possible and thus permanent crashes are unlikely. However, depending on the severity of the issue, permanent crashes may still occur.
 
 ### Feature branches - self-hosted
 
 The _feature_ branches should be the main working branches for developers, and code on the _feature_ branch a dev is currently working on should be hosted by themselves to allow for maximum flexibility. A new branch should be created for each new feature added and in the following format: `feature-[featurename]`. If the feature you want to work on already has a branch, devs should work on it together instead of creating spin-offs. If a spin-off must be crated, the following name format should be used: `feature-[featurename]-var[x]`, where `x` is the incremental variation number (starting with 1).
 
-Once you or the devs working on the branch deem the feature to be complete enough for deployment to BeachBall, the _feature_ branch should be merged with the _develop_ branch.
+Once you or the devs working on the branch deem the feature to be complete enough for deployment to BeachBall, the _feature_ branch merge with the _develop_ branch should be initiated via a pull request.
 
 ## Code Style
 
