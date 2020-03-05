@@ -1,8 +1,31 @@
-# yuuto-bot
+# yuuto-bot <!-- omit in toc -->
 
-Yuuto bot is meant to be a collaboration of the [Camp Buddy Official Fan Server](https://discord.gg/hh2xDTV) members, completely community driven and open source. The bot's idea came form an increasing amount of tech oriented campers asking to see or contribute to _Super Hiro_ (the server's custom administrative bot).
+Yuuto bot is meant to be a collaboration of the [Official Camp Buddy Fan Server](https://discord.gg/hh2xDTV) members, completely community driven and open source. The bot's idea came from an increasing number of tech-oriented campers asking to see or contribute to _Super Hiro_ (the server's custom administrative bot).
 
-## Project setup
+## Contents <!-- omit in toc -->
+
+- [Project Setup](#project-setup)
+  - [Bot application](#bot-application)
+  - [Why JavaScript](#why-javascript)
+  - [Development](#development)
+- [Development Server](#development-server)
+  - [Bots](#bots)
+  - [Channels](#channels)
+  - [Testing channels](#testing-channels)
+  - [.env](#env)
+- [Git flow](#git-flow)
+  - [Master branch - Yuuto](#master-branch---yuuto)
+  - [Release branch - BabyShark](#release-branch---babyshark)
+  - [Develop branch - BeachBall](#develop-branch---beachball)
+  - [Feature branches - self-hosted](#feature-branches---self-hosted)
+- [Code Style](#code-style)
+  - [JS ES11, Node v13](#js-es11-node-v13)
+  - [ESlint & Prettier](#eslint--prettier)
+  - [End of Line](#end-of-line)
+  - [Commenting](#commenting)
+  - [Commit messages](#commit-messages)
+
+## Project Setup
 
 The Yuuto bot will be written in JavaScript and the repository hosted on GitHub, as this seemed the best way to make the project accessible and easy for our campers to chip in on.
 
@@ -22,14 +45,16 @@ Yuuto bot has its own development server, you can join it by clicking [here](htt
 
 ## Development Server
 
-The development server is the place where the campers can interact and test the bot, as for many it might be easier than to work with GitHub's intergrated tools and branches. The server also makes use of webhooks to make integration with GitHub even simpler.
+The development server is the place where the campers can interact and test the bot, as for many it might be easier than to work with GitHub's integrated tools and branches. The server also makes use of webhooks to make integration with GitHub even simpler.
+
+> **Note**: the development server shall remain strictly safe for work and no explicit content will be tolerated. Devs might be wanting to work in public spaces such as work / university / school, and this rule is in place in order to be considerate towards them.
 
 ### Bots
 
-To test the code in an united environment, multiple bots will be in the server.  
+To test the code in a unified environment, multiple bots will be in the server.  
 _BeachBall_ is the official development bot that runs the code in the _develop_ branch. Once a user pushes code to the _develop_ branch, the bot is automatically updated. _BabyShark_ is a bot that is only active when code is ready to be released to Yuuto. _Backend_ is an administrative bot doing under the hood work that one should pay no mind to, such as deployment server and git integrations.
 
-For _feature_ branches, each camper / developer is welcome and encouraged to add their own testing bot to the server and using it in conjunction with the feature-testing channels to develop it. This lightens the load on BeachBall, and also gives you more control of the bot such as viewing console logs or starting it up / shutting it down.
+For _feature_ branches, each camper / developer is welcome and encouraged to add their own testing bot to the server and using it in conjunction with the feature-testing channels to develop it. This lightens the load on BeachBall and gives you more control of the bot such as viewing console logs or starting it up / shutting it down.
 
 ### Channels
 
@@ -54,34 +79,63 @@ Testing channels are categorised based on the project branch they should be used
 Since some commands might be role or channel specific, and these IDs differ between the CB server and the development server, _environment variables_ should be used in code when locking features to specific IDs.  
 This way, all that needs to be different for the feature + BeachBall bots and Yuuto bot is the `.env` file located on disk, while the code can stay the same and be directly implemented without any modifications from _release_ branch.
 
-## Development process
+## Git flow
 
 To keep the project smooth and running, it is important to have a rigorous development process and a standardised way of doing things.
 
-### Git flow
-
 The following sections contain information about branches, and how they should be treated. If you aren't familiar with how to work with git, please familiarise yourself with its basics, and remember to ask for help from other devs should you need to. Proper git workflow and usage is crucial for the smooth operation of the project.
 
-#### Master branch - Yuuto
+### Master branch - Yuuto
 
 The _master_ branch is the most important branch and the one that contains the running code of Yuuto. This branch is protected and nobody, not even the maintainers can push code to it directly. The only way code can make its way to the _master_ branch, is when _release_ gets merged with it by a maintainer.
 
-#### Release branch - BabyShark
+### Release branch - BabyShark
 
 The _release_ branch is a branch based off _develop_ branch, and any additions to it should only contain bug fixes, quality improvements and final polishes. This branch is created once enough or noticeable features on _develop_ get finalised, and it is time to deploy them to Yuuto. The code in the _release_ branch is ran by BabyShark. Once a maintainer merges _release_ with _master_, the branch gets deleted.
 
 Work can continue on the _develop_ branch and other branches while _release_ is being worked on, and the auditing of _release_ might take time due to external factors. After the branch is deleted, work will resume as previously, and BabyShark will be toggled off.
 
-#### Develop branch - BeachBall
+### Develop branch - BeachBall
 
-The _develop_ branch is the main development branch of Yuuto and the one that BeachBall is running. When code is pushed to this branch BeachBall will automatically update itself to run it. While there are no restritions to pushes to _develop_, this automatic updating should be kept in mind, as only the maintainers have access to the bot should a fatal error occur.
+The _develop_ branch is the main development branch of Yuuto and the one that BeachBall is running. When code is pushed to this branch BeachBall will automatically update itself to run it. While there are no restrictions to pushes to _develop_, this automatic updating should be kept in mind, as only the maintainers have access to the bot should a fatal error occur.
 
-Note: _BeachBall is configured to restart itself if possible, thus permanent crashes are unlikely, however depending on the severity of the issue or configuration mistake, permanent crashes may still occur._
+> **Note:** BeachBall is configured to restart itself if possible, thus permanent crashes are unlikely, however depending on the severity of the issue or configuration mistake, permanent crashes may still occur.
 
 New features shouldn't be committed to this branch directly, and merges with _feature_ should be used instead. Direct commits should only update code quality updates, and features should be merged to _develop_ only when they are already fairly stable.
 
-#### Feature branches - self-hosted
+### Feature branches - self-hosted
 
-The _feature_ branches should be the main working branches for developers, and code on the _feature_ branch a dev is currently working on should be hosted by themself to allow for maximum flexibility. A new branch should be created for each new feature added and in the following format: `feature-[featurename]`. If the feature you want to work on already has a branch, devs should work on it together instead of creating spin-offs. If a spin-off must be crated, the following name format should be used: `feature-[featurename]-var[x]`, where `x` is the incremental variation number (starting with 1).
+The _feature_ branches should be the main working branches for developers, and code on the _feature_ branch a dev is currently working on should be hosted by themselves to allow for maximum flexibility. A new branch should be created for each new feature added and in the following format: `feature-[featurename]`. If the feature you want to work on already has a branch, devs should work on it together instead of creating spin-offs. If a spin-off must be crated, the following name format should be used: `feature-[featurename]-var[x]`, where `x` is the incremental variation number (starting with 1).
 
 Once you or the devs working on the branch deem the feature to be complete enough for deployment to BeachBall, the _feature_ branch should be merged with the _develop_ branch.
+
+## Code Style
+
+When working as a team, it is important to make working with one another's code as pleasant as possible. Therefore, consistency is required, and some practices should be followed by all devs so ensure smooth teamwork and code integrity.
+
+### JS ES11, Node v13
+
+The current ECMAScript version is ECMAScript 2020 / ES11. All code written should be in-line with the best practices considered for ES11, however this mostly means adopting post ES6 syntax and practices. The major practices to follow are the usage of arrow functions unless `this` is needed and making use of the destructuring operator.
+
+The bot runs on Node.js `v13.9.0`, but any version that is v13+ can be used on your local machine to run the code. It is important to note that the bot also uses the `esm` module loader instead of `cjs`, therefore usage of ES6 modules and imports is required, or the code will not run.
+
+The reason why bleeding edge code and features are being run on node, is that promoting obsolete code and practices is both limiting and harmful in the long run. This is especially true for any newer JS programmers who might be using this project as an opportunity to learn and develop their skills.  
+Even as a seasoned programmer, if you're still following legacy habits, see this as an opportunity to improve and keep yourself up to date with new standards, if you aren't already doing so.
+
+### ESlint & Prettier
+
+To make the code style as consistent as possible and making the project easier to maintain, ESlint and Prettier rules are enforced on this project. You should not touch the configuration files included within the repository, and you shouldn't override them with your own user files either, as a team cannot work with everyone having their own code aesthetic.  
+If the linter is giving you issues that you disagree with and doing things differently isn't an option, use file-based rule-disabling. The issue can then later be discussed as a team and the rule added to the configuration files or the snippet itself being rewritten.
+
+### End of Line
+
+Throughout the whole project, all files should be using the _LF_ end of line separators, which is standard for Unix and macOS systems. On Windows, the default line ending is CRLF, in which case you should configure your editor to use LF line separators for the project files.
+
+### Commenting
+
+Your code should be well documented and commented. It is not necessary to comment every single function, loop, variable, ... however if the purpose of a piece of code isn't immediately clear from the naming or trivial function, some form of documentation is expected. People of various coding backgrounds, skill levels and programming styles may work together on this project, and poor documentation or assumptions about the understanding of others are not viable.  
+In addition, the maintainers will have to audit the code before it is merged to _master_, and all obscure or undocumented code will be refused, no questions asked, until properly documented.
+
+### Commit messages
+
+No specific git commit message style is set in place and you are free to name your commits however you want, however your commit messages should still be informative and carry the essence of the commits. Any purposeful trolling or lazy commits will not be tolerated.
