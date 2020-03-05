@@ -46,7 +46,6 @@ yuuto.once("ready", () => {
 });
 
 yuuto.on("message", async message => {
-  if (message.channel.id === "684447764259668072") yuuto.destroy(); // administrative purposes
   if (message.author.bot || !message.guild) return;
   if (!message.content.startsWith(prefix)) return;
 
