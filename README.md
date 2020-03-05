@@ -21,22 +21,6 @@ git clone -b develop --single-branch git@github.com:iamdeja/yuuto-bot.git
 
 The first command clones over HTTPS, the second one over SSH, thus requiring you to set up a key. Either command will clone the _develop_ branch **only**.
 
-> **Note:** to start working on the bot, do not clone _master_, but _develop_ instead (read [git flow](#git-flow)).
-
-You can clone the _develop_ branch with:
-
-```bash
-$ git clone -b develop --single-branch https://github.com/iamdeja/yuuto-bot.git
-```
-
-or
-
-```bash
-$ git clone -b develop --single-branch git@github.com:iamdeja/yuuto-bot.git
-```
-
-The first one clones over HTTPS, the second one over SSH, thus requiring you to set up a key. Either command will clone the _develop_ branch __only__.
-
 ## Contents <!-- omit in toc -->
 
 - [Project Setup](#project-setup)
