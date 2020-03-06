@@ -49,7 +49,7 @@
                 <a href="">Git tutorial</a>
               </li>
               <li class="header-nav__list--el">
-                <a href="../git-flow/">Git fLow</a>
+                <a href="../git-flow/">Git flow</a>
               </li>
               <li class="header-nav__list--el">
                 <a href="../../milestones/">Milestones</a>
@@ -70,7 +70,7 @@
     </header>
 
     <!-- Main content -->
-    <main class="c-rulepage c-articlepage" role="main">
+    <main class="c-articlepage" role="main">
       <div class="u-wrapper u-padding-24 u-padding-24-90--h u-margin--c">
         <nav aria-label="breadcrumbs" class="c-breadcrumbs u-fit--w">
           <ol class="c-breadcrumbs__list">
@@ -84,94 +84,131 @@
           </ol>
         </nav>
         <header class="c-article-header">
-          <h1 class="artic-title">Play fair, play fun!</h1>
+          <h1 class="artic-title">Git gud</h1>
         </header>
         <article class="c-article u-inline-block">
-          <ol class="ruleslist">
-            <li class="ruleslist__rule">
-              <h3 class="ruleslist__rule--title"><span>1.</span>Play fair.</h3>
-              <p class="ruleslist__rule--desc">
-                The simplest and most immutable of rules. For everyone to have
-                fun, please don't participate in any form of cheating. This
-                includes but is not limited to: using engines, advising or being
-                advised by another player and using opening books or assisted
-                analysis.
-              </p>
+          <h3>So what the heck is Git</h3>
+          <p>
+            Git is the most popular version control system (VCS) out there. In
+            very general terms, a VCS is a system that keeps track of files and
+            actions in a project, serving both as a changelog and as a backup.
+            Want to roll back to a previous version of a file? Git has you
+            covered. Want to roll back your whole project prior to a massive
+            bug? Git has you covered. The point of git? Git has you covered.
+          </p>
+          <p>
+            The place where all your files are stored is called a
+            <em>repository</em>. With git, this repository is downloaded by all
+            members working on the project, giving it a decentralised structure:
+            if you delete your copy, not all is lost. This stays true even if
+            the repository is hosted on a central main server. The point of
+            decentralisation? Git has you covered.
+          </p>
+          <h4>Wow, filesize pls</h4>
+          <p>
+            Git doesn't actually store a copy of all versions of all your files:
+            it stores the differences between different versions of the files,
+            which helps keeping filesize down but also to see the exact changes.
+            But enough with the backstory, let's see how we can use it.
+          </p>
+          <h4>Gimme git</h4>
+          <p>
+            Sure. The only cost is checking out the
+            <a
+              href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git"
+              >installation guide</a
+            >. Once you have your shiny copy of git, let's get started with
+            using it.
+          </p>
+          <h3>How to use it</h3>
+          <p>
+            Git may seem scary at first and you may think it's all about command
+            line interfaces (CLI) and you gotta remember stuff. Luckily that
+            isn't true. This isn't some high school exam, you can have this
+            guide or any git documentation open all day any day. You can even
+            lean back in your chair! You will naturally pick up the basic
+            commands and logic as you use them, but try to sit straight to also
+            pick up good posture.
+          </p>
+          <p>
+            If you're still concerned, Git also has graphical user interfaces
+            (GUI) and most of the work will be done with integrations in your
+            favourite code editor. Yes that is correct, unless you want to feel
+            like a hacker, you will only need the CLI when something goes very
+            wrong.
+          </p>
+          <h4>Creating a repository</h4>
+          <p>
+            In case you are using the command line, creating a new git
+            repository or converting an existing folder into one is as easy as
+            typing
+            <code>git init</code> in the directory (fancy word for folder) on
+            your machine.
+          </p>
+          <h4>Checking out a repository</h4>
+          <p>
+            Repositories can be either local or hosted on a server. Checking a
+            repository out means creating a copy of it elsewhere. It is often
+            referred to as "cloning".
+          </p>
+          <p>
+            If the git repository is local, you can make a copy of it using
+            <code>git clone /path/to/repository</code>. If however you want to
+            get a local copy of a remotely hosted repository, you can get it
+            using <code>git clone remote-link</code>. There are two types of
+            remote links:
+          </p>
+          <ul>
+            <li>
+              HTTPS urls:
+              <code>https://host.name/path/to/repository</code>
             </li>
-            <li class="ruleslist__rule">
-              <h3 class="ruleslist__rule--title">
-                <span>2.</span>Respect the format.
-              </h3>
-              <p class="ruleslist__rule--desc">
-                When setting up your chess game, please make sure to use the
-                settings previously agreed upon, or dictated by the tournament.
-              </p>
+            <li>
+              SSH links:
+              <code>username@host:/path/to/repository</code>
             </li>
-            <li class="ruleslist__rule">
-              <h3 class="ruleslist__rule--title">
-                <span>3.</span>Respect your opponent.
-              </h3>
-              <p class="ruleslist__rule--desc">
-                We know, it can be as frustrating to be defeated as it can be
-                satisfying to win. Whatever happens, please respect your
-                opponent so that both of you can have fun. This also means you
-                shouldn't purposefully sabotage the game for your opponent.
-              </p>
-            </li>
-            <li class="ruleslist__rule">
-              <h3 class="ruleslist__rule--title">
-                <span>4.</span>Respect the rules of chess.
-              </h3>
-              <p class="ruleslist__rule--desc">
-                Woohoo, digitial chess! Illegal moves can't be made by default.
-                However other aspects such as asking for a takeback or needing
-                more time can, but don't have to be satisfied by your opponent.
-                You're free to offer and ask, but please don't get upset should
-                the other party decline, as that is their right.
-              </p>
-            </li>
-            <li class="ruleslist__rule">
-              <h3 class="ruleslist__rule--title">
-                <span>5.</span>Play under your own account.
-              </h3>
-              <p class="ruleslist__rule--desc">
-                When playing matches, please use your own account and do not
-                give others access to it either. We discourage playing as /
-                against anonymous accounts, but if that happens, you have the
-                responsibility of identifying your opponent.
-              </p>
-            </li>
-            <li class="ruleslist__rule">
-              <h3 class="ruleslist__rule--title">
-                <span>6.</span>Turn in the results.
-              </h3>
-              <p class="ruleslist__rule--desc">
-                After finishing your games, please send the links to the games
-                to a member of the team. This should be done regardless of what
-                your opponent tells you. Better both of you than neither.
-              </p>
-            </li>
-            <li class="ruleslist__rule">
-              <h3 class="ruleslist__rule--title"><span>7.</span>Plan ahead.</h3>
-              <p class="ruleslist__rule--desc">
-                Please plan ahead of time when preparing for your match. If
-                something urgent comes up during the match, there is no way to
-                stop the clocks. Your opponent can decide to draft the game, but
-                isn't required to, so you cannot dispute cancelled matches (be
-                mindful of misclicks).
-              </p>
-            </li>
-            <li class="ruleslist__rule">
-              <h3 class="ruleslist__rule--title"><span>8.</span>Have fun.</h3>
-              <p class="ruleslist__rule--desc">
-                Look, we just want all of you to have fun and these rules are
-                here not to punish you, but to help create a positive and equal
-                atmosphere. This way, both newcomers and avid players alike can
-                gain something from these events and the wonderful game that is
-                chess.
-              </p>
-            </li>
-          </ol>
+          </ul>
+          <p>
+            Cloning a repository over SSH often requires you to set up SSH keys,
+            but all main git host platforms have their easy to follow guides on
+            how to set up these keys.
+          </p>
+          <h4>Letting git know</h4>
+          <p>
+            Git doesn't track your files by default. You can tell git to watch a
+            file using <code>git add &ltfilename&gt</code> or
+            <code>git add .</code> to add everything in the directory to the
+            watchlist.
+          </p>
+          <p>
+            Git tracking your files doesn't mean every time you save your file
+            the change gets stored (like OneDrive for example). To make git save
+            the relevant state of your files, you use the
+            <code>git commit -m "Commit message"</code> command. This saves the
+            changes with the message you have set.
+          </p>
+          <p>
+            It's a good idea to have simple and clear commit messages, so that
+            you can later understand and find changes in the git history.
+          </p>
+          <h4>Letting the world know</h4>
+          <p>
+            Committing files saves them in your local copy, however if you are
+            working with remote repositories you have to upload your changes
+            somehow. This is done via the <code>git push</code> command. The
+            full syntax for this command is
+            <code>git push &ltrepository&gt &ltbranch&gt</code> but more on that
+            later. If you haven't configured specific remote repositories, the
+            default is "origin". The default branch is "master".
+          </p>
+          <p>
+            On that note, if you haven't added cloned from a remote repository,
+            you can add the remote repository using
+            <code>git remote add origin &ltserver&gt</code>, where "server" is
+            the HTTPS or SSH link. Replacing "origin" allows you to create and
+            name multiple remote repositories such as "upstream", but that falls
+            out of the basics.
+          </p>
         </article>
         <nav class="c-article-nav u-float--r u-relative">
           <h2 class="c-article-nav__title">Knowledgebase</h2>
