@@ -1,274 +1,260 @@
 <!DOCTYPE html>
 <html class="no-js" dir="ltr" lang="en-gb">
-  <head>
-    <!-- initial setup -->
-    <meta charset="utf-8" />
-    <meta content="ie=edge" http-equiv="x-ua-compatible" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title>Git tutorial | Yuuto KB</title>
-    <!-- meta -->
-    <meta content="How to work with git." name="description" />
-    <meta content="Yuuto-bot team" name="author" />
-    <meta content="Yuuto CB bot git tutorial" name="keywords" />
-    <!-- links -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="../../media/styles/main.min.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link href="https://iamdeja.github.io/yuuto-bot" rel="canonical" />
-    <!-- platforms -->
-    <meta content="#ffffff" name="theme-color" />
-    <!-- Scripts -->
-    <!--script defer="defer" src="../../media/scripts/main.js"></script-->
-    <script src="https://cdn.jsdelivr.net/npm/@gitgraph/js"></script>
-  </head>
 
-  <body
-    class="home t-yuuto"
-    current-page="git-tutorial"
-    subcategory="knowledgebase"
-  >
-    <!-- No progress tracker -->
-    <!-- Header -->
-    <header class="c-gh u-relative u-fit--w u-of--h">
-      <div class="u-wrapper u-margin--c u-padding-24-90--h">
-        <div class="header-content">
-          <a class="header-logo" href="https://iamdeja.github.io/yuuto-bot">
-            <img
-              alt="yuuto's profile picture"
-              src="../../media/images/yuuto.png"
-            />
-          </a>
-          <nav class="header-nav u-flex u-flex-al--c u-flex-jc--sb u-of--h">
-            <ul class="header-nav__list u-of-x--a u-of-y--h u-nowrap">
-              <li class="header-nav__list--el">
-                <a href="../../">Home</a>
-              </li>
-              <li class="header-nav__list--el">
-                <a href="">Git tutorial</a>
-              </li>
-              <li class="header-nav__list--el">
-                <a href="../git-flow/">Git flow</a>
-              </li>
-              <li class="header-nav__list--el">
-                <a href="../../milestones/">Milestones</a>
-              </li>
-              <li class="header-nav__list--el">
-                <a href="../../developers/">Developers</a>
-              </li>
-              <li class="header-nav__list--el">
-                <a href="https://github.com/iamdeja/yuuto-bot">GitHub</a>
-              </li>
-            </ul>
-          </nav>
-          <div class="header-button">
-            <a href="https://github.com/iamdeja/yuuto-bot">View the repo</a>
-          </div>
-        </div>
-      </div>
-    </header>
+<head>
+  <!-- initial setup -->
+  <meta charset="utf-8" />
+  <meta content="ie=edge" http-equiv="x-ua-compatible" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Git tutorial | Yuuto KB</title>
+  <!-- meta -->
+  <meta content="How to work with git." name="description" />
+  <meta content="Yuuto-bot team" name="author" />
+  <meta content="Yuuto CB bot git tutorial" name="keywords" />
+  <!-- links -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:400,700&display=swap" rel="stylesheet" />
+  <link href="../../media/styles/main.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://iamdeja.github.io/yuuto-bot" rel="canonical" />
+  <!-- platforms -->
+  <meta content="#ffffff" name="theme-color" />
+  <!-- Scripts -->
+  <!--script defer="defer" src="../../media/scripts/main.js"></script-->
+  <script src="https://cdn.jsdelivr.net/npm/@gitgraph/js"></script>
+</head>
 
-    <!-- Main content -->
-    <main class="c-articlepage" role="main">
-      <div class="u-wrapper u-padding-24 u-padding-24-90--h u-margin--c">
-        <nav aria-label="breadcrumbs" class="c-breadcrumbs u-fit--w">
-          <ol class="c-breadcrumbs__list">
-            <li class="u-inline-block">
-              <a class="c-breadcrumbs__list--link" href="../../">Home</a>
+<body class="home t-yuuto" current-page="git-tutorial" subcategory="knowledgebase">
+  <!-- No progress tracker -->
+  <!-- Header -->
+  <header class="c-gh u-relative u-fit--w u-of--h">
+    <div class="u-wrapper u-margin--c u-padding-24-90--h">
+      <div class="header-content">
+        <a class="header-logo" href="https://iamdeja.github.io/yuuto-bot">
+          <img alt="yuuto's profile picture" src="../../media/images/yuuto.png" />
+        </a>
+        <nav class="header-nav u-flex u-flex-al--c u-flex-jc--sb u-of--h">
+          <ul class="header-nav__list u-of-x--a u-of-y--h u-nowrap">
+            <li class="header-nav__list--el">
+              <a href="../../">Home</a>
             </li>
-            <li class="u-inline-block">
-              <a class="c-breadcrumbs__list--link" href="../">Knowledgebase</a>
+            <li class="header-nav__list--el">
+              <a href="">Git tutorial</a>
             </li>
-            <li class="u-inline-block">Git tutorial</li>
-          </ol>
-        </nav>
-        <header class="c-article-header">
-          <h1 class="artic-title">Git gud</h1>
-        </header>
-        <article class="c-article u-inline-block">
-          <h3 id="whatis">So what the heck is Git</h3>
-          <p>
-            Git is the most popular version control system (VCS) out there. In
-            very general terms, a VCS is a system that keeps track of files and
-            actions in a project, serving both as a changelog and as a backup.
-            Want to roll back to a previous version of a file? Git has you
-            covered. Want to roll back your whole project prior to a massive
-            bug? Git has you covered. The point of git? Git has you covered.
-          </p>
-          <p>
-            The place where all your files are stored is called a
-            <em>repository</em>. With git, this repository is downloaded by all
-            members working on the project, giving it a decentralised structure:
-            if you delete your copy, not all is lost. This stays true even if
-            the repository is hosted on a central main server. The point of
-            decentralisation? Git has you covered.
-          </p>
-          <h4>Wow, filesize pls</h4>
-          <p>
-            Git doesn't actually store a copy of all versions of all your files:
-            it stores the differences between different versions of the files,
-            which helps keeping filesize down but also to see the exact changes.
-            But enough with the backstory, let's see how we can use it.
-          </p>
-          <h4>Gimme git</h4>
-          <p>
-            Sure. The only cost is checking out the
-            <a
-              href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git"
-              >installation guide</a
-            >. Once you have your shiny copy of git, let's get started with
-            using it.
-          </p>
-          <h3 id="basic-usage">Basic usage</h3>
-          <p>
-            Git may seem scary at first and you may think it's all about command
-            line interfaces (CLI) and you gotta remember stuff. Luckily that
-            isn't true. This isn't some high school exam, you can have this
-            guide or any git documentation open all day any day. You can even
-            lean back in your chair! You will naturally pick up the basic
-            commands and logic as you use them, but try to sit straight to also
-            pick up good posture.
-          </p>
-          <p>
-            If you're still concerned, Git also has graphical user interfaces
-            (GUI) and most of the work will be done with integrations in your
-            favourite code editor. Yes that is correct, unless you want to feel
-            like a hacker, you will only need the CLI when something goes very
-            wrong.
-          </p>
-          <h4>Creating a repository</h4>
-          <p>
-            In case you are using the command line, creating a new git
-            repository or converting an existing folder into one is as easy as
-            typing
-            <code>git init</code> in the directory (fancy word for folder) on
-            your machine.
-          </p>
-          <h4>Checking out a repository</h4>
-          <p>
-            Repositories can be either local or hosted on a server. Checking a
-            repository out means creating a copy of it elsewhere. It is often
-            referred to as "cloning".
-          </p>
-          <p>
-            If the git repository is local, you can make a copy of it using
-            <code>git clone /path/to/repository</code>. If however you want to
-            get a local copy of a remotely hosted repository, you can get it
-            using <code>git clone remote-link</code>. There are two types of
-            remote links:
-          </p>
-          <ul>
-            <li>
-              HTTPS urls:
-              <code>https://host.name/path/to/repository</code>
-            </li>
-            <li>
-              SSH links:
-              <code>username@host:/path/to/repository</code>
-            </li>
-          </ul>
-          <p>
-            Cloning a repository over SSH often requires you to set up SSH keys,
-            but all main git host platforms have their easy to follow guides on
-            how to set up these keys.
-          </p>
-          <h4>Git isn't a spy</h4>
-          <p>
-            Git isn't watching your files by default, which means it doesn't
-            track changes to your files unless you tell it to. If you want git
-            to know about your files, you need to add them to the
-            <em>Index</em>, commonly known as staging area. There, git stores
-            the cumulative changes made to the file since the last checkpoint in
-            git's history.
-          </p>
-          <p>
-            Since you wouldn't want to record every single time you save a file,
-            as not every save is a meaningful step in your project, files in the
-            staging area aren't stored in the git history (Index has its own
-            temporary history). When your files reach a state that you would
-            like to record, you <em>commit</em> these files. Committing the
-            files saves the staged changes to the git history, where they will
-            stay for good.
-          </p>
-          <h4>Letting git know</h4>
-          <p>
-            You can tell git to watch a file using
-            <code>git add &ltfilename&gt</code> or <code>git add .</code> to add
-            everything in the directory to the watchlist.
-          </p>
-          <p>
-            Again, since since git doesn't update its history on each file save
-            (like OneDrive for example) you commit your changes using the
-            <code>git commit -m "Commit message"</code> command. This saves the
-            changes with the message you have set.
-          </p>
-          <p>
-            It's a good idea to have simple and clear commit messages, so that
-            you can later understand and find changes in the git history.
-          </p>
-          <h4>Letting the world know</h4>
-          <p>
-            Committing files saves them in your local copy, however if you are
-            working with remote repositories you have to upload your changes
-            somehow. This is done via the <code>git push</code> command. The
-            full syntax for this command is
-            <code>git push &ltrepository&gt &ltbranch&gt</code> but more on that
-            later. If you haven't configured specific remote repositories, the
-            default is "origin". The default branch is "master".
-          </p>
-          <p>
-            On that note, if you haven't added cloned from a remote repository,
-            you can add the remote repository using
-            <code>git remote add origin &ltserver&gt</code>, where "server" is
-            the HTTPS or SSH link. Replacing "origin" allows you to create and
-            name multiple remote repositories such as "upstream", but that falls
-            out of the basics.
-          </p>
-          <h4>Getting updates</h4>
-          <p>
-            Sometimes the remote repository gets updated as you are working on
-            the local copy. In that case you can update your local copy using
-            <code>git pull</code>. When you pull, you tell git to
-            <em>fetch</em> files and <em>merge</em> them.
-          </p>
-          <p>
-            Sometimes conflicts happen when git is trying to merge files into
-            your local repository. Such issue may also happen when you are
-            pushing into a repository. What to do in these cases is a topic for
-            <a href="#merging">later</a>.
-          </p>
-          <h3 id="more-stuff">More stuff</h3>
-          <h4>Branching</h4>
-          <h4 id="merging">Merging</h4>
-          <h4>Logging</h4>
-          <h4>Tagging</h4>
-          <h4>Signing</h4>
-        </article>
-        <nav class="c-article-nav u-float--r u-relative">
-          <h2 class="c-article-nav__title">Knowledgebase</h2>
-          <ul class="c-article-nav__list">
-            <li class="u-relative">
-              <a href="#">Git tutorial</a>
-              <ul>
-                <li><a href="#whatis">So what the heck is Git</a></li>
-                <li><a href="#basic-usage">Basic usage</a></li>
-                <li><a href="#more-stuff">More Stuff</a></li>
-              </ul>
-            </li>
-            <li class="u-relative">
+            <li class="header-nav__list--el">
               <a href="../git-flow/">Git flow</a>
             </li>
+            <li class="header-nav__list--el">
+              <a href="../../milestones/">Milestones</a>
+            </li>
+            <li class="header-nav__list--el">
+              <a href="../../developers/">Developers</a>
+            </li>
+            <li class="header-nav__list--el">
+              <a href="https://github.com/iamdeja/yuuto-bot">GitHub</a>
+            </li>
           </ul>
         </nav>
+        <div class="header-button">
+          <a href="https://github.com/iamdeja/yuuto-bot">View the repo</a>
+        </div>
       </div>
-    </main>
+    </div>
+  </header>
 
-    <!-- Footer -->
-    <footer class="c-global-footer"></footer>
-  </body>
+  <!-- Main content -->
+  <main class="c-articlepage" role="main">
+    <div class="u-wrapper u-padding-24 u-padding-24-90--h u-margin--c">
+      <nav aria-label="breadcrumbs" class="c-breadcrumbs u-fit--w">
+        <ol class="c-breadcrumbs__list">
+          <li class="u-inline-block">
+            <a class="c-breadcrumbs__list--link" href="../../">Home</a>
+          </li>
+          <li class="u-inline-block">
+            <a class="c-breadcrumbs__list--link" href="../">Knowledgebase</a>
+          </li>
+          <li class="u-inline-block">Git tutorial</li>
+        </ol>
+      </nav>
+      <header class="c-article-header">
+        <h1 class="artic-title">Git gud</h1>
+      </header>
+      <article class="c-article u-inline-block">
+        <h3 id="whatis">So what the heck is Git</h3>
+        <p>
+          Git is the most popular version control system (VCS) out there. In
+          very general terms, a VCS is a system that keeps track of files and
+          actions in a project, serving both as a changelog and as a backup.
+          Want to roll back to a previous version of a file? Git has you
+          covered. Want to roll back your whole project prior to a massive
+          bug? Git has you covered. The point of git? Git has you covered.
+        </p>
+        <p>
+          The place where all your files are stored is called a
+          <em>repository</em>. With git, this repository is downloaded by all
+          members working on the project, giving it a decentralised structure:
+          if you delete your copy, not all is lost. This stays true even if
+          the repository is hosted on a central main server. The point of
+          decentralisation? Git has you covered.
+        </p>
+        <h4>Wow, filesize pls</h4>
+        <p>
+          Git doesn't actually store a copy of all versions of all your files:
+          it stores the differences between different versions of the files,
+          which helps keeping filesize down but also to see the exact changes.
+          But enough with the backstory, let's see how we can use it.
+        </p>
+        <h4>Gimme git</h4>
+        <p>
+          Sure. The only cost is checking out the
+          <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">installation guide</a>. Once you have
+          your shiny copy of git, let's get started with
+          using it.
+        </p>
+        <h3 id="basic-usage">Basic usage</h3>
+        <p>
+          Git may seem scary at first and you may think it's all about command
+          line interfaces (CLI) and you gotta remember stuff. Luckily that
+          isn't true. This isn't some high school exam, you can have this
+          guide or any git documentation open all day any day. You can even
+          lean back in your chair! You will naturally pick up the basic
+          commands and logic as you use them, but try to sit straight to also
+          pick up good posture.
+        </p>
+        <p>
+          If you're still concerned, Git also has graphical user interfaces
+          (GUI) and most of the work will be done with integrations in your
+          favourite code editor. Yes that is correct, unless you want to feel
+          like a hacker, you will only need the CLI when something goes very
+          wrong.
+        </p>
+        <h4>Creating a repository</h4>
+        <p>
+          In case you are using the command line, creating a new git
+          repository or converting an existing folder into one is as easy as
+          typing
+          <code>git init</code> in the directory (fancy word for folder) on
+          your machine.
+        </p>
+        <h4>Checking out a repository</h4>
+        <p>
+          Repositories can be either local or hosted on a server. Checking a
+          repository out means creating a copy of it elsewhere. It is often
+          referred to as "cloning".
+        </p>
+        <p>
+          If the git repository is local, you can make a copy of it using
+          <code>git clone /path/to/repository</code>. If however you want to
+          get a local copy of a remotely hosted repository, you can get it
+          using <code>git clone remote-link</code>. There are two types of
+          remote links:
+        </p>
+        <ul>
+          <li>
+            HTTPS urls:
+            <code>https://host.name/path/to/repository</code>
+          </li>
+          <li>
+            SSH links:
+            <code>username@host:/path/to/repository</code>
+          </li>
+        </ul>
+        <p>
+          Cloning a repository over SSH often requires you to set up SSH keys,
+          but all main git host platforms have their easy to follow guides on
+          how to set up these keys.
+        </p>
+        <h4>Git isn't a spy</h4>
+        <p>
+          Git isn't watching your files by default, which means it doesn't
+          track changes to your files unless you tell it to. If you want git
+          to know about your files, you need to add them to the
+          <em>Index</em>, commonly known as staging area. There, git stores
+          the cumulative changes made to the file since the last checkpoint in
+          git's history.
+        </p>
+        <p>
+          Since you wouldn't want to record every single time you save a file,
+          as not every save is a meaningful step in your project, files in the
+          staging area aren't stored in the git history (Index has its own
+          temporary history). When your files reach a state that you would
+          like to record, you <em>commit</em> these files. Committing the
+          files saves the staged changes to the git history, where they will
+          stay for good.
+        </p>
+        <h4>Letting git know</h4>
+        <p>
+          You can tell git to watch a file using
+          <code>git add &ltfilename&gt</code> or <code>git add .</code> to add
+          everything in the directory to the watchlist.
+        </p>
+        <p>
+          Again, since since git doesn't update its history on each file save
+          (like OneDrive for example) you commit your changes using the
+          <code>git commit -m "Commit message"</code> command. This saves the
+          changes with the message you have set.
+        </p>
+        <p>
+          It's a good idea to have simple and clear commit messages, so that
+          you can later understand and find changes in the git history.
+        </p>
+        <h4>Letting the world know</h4>
+        <p>
+          Committing files saves them in your local copy, however if you are
+          working with remote repositories you have to upload your changes
+          somehow. This is done via the <code>git push</code> command. The
+          full syntax for this command is
+          <code>git push &ltrepository&gt &ltbranch&gt</code> but more on that
+          later. If you haven't configured specific remote repositories, the
+          default is "origin". The default branch is "master".
+        </p>
+        <p>
+          On that note, if you haven't added cloned from a remote repository,
+          you can add the remote repository using
+          <code>git remote add origin &ltserver&gt</code>, where "server" is
+          the HTTPS or SSH link. Replacing "origin" allows you to create and
+          name multiple remote repositories such as "upstream", but that falls
+          out of the basics.
+        </p>
+        <h4>Getting updates</h4>
+        <p>
+          Sometimes the remote repository gets updated as you are working on
+          the local copy. In that case you can update your local copy using
+          <code>git pull</code>. When you pull, you tell git to
+          <em>fetch</em> files and <em>merge</em> them.
+        </p>
+        <p>
+          Sometimes conflicts happen when git is trying to merge files into
+          your local repository. Such issue may also happen when you are
+          pushing into a repository. What to do in these cases is a topic for
+          <a href="#merging">later</a>.
+        </p>
+        <h3 id="more-stuff">More stuff</h3>
+        <h4>Branching</h4>
+        <h4 id="merging">Merging</h4>
+        <h4>Logging</h4>
+        <h4>Tagging</h4>
+        <h4>Signing</h4>
+      </article>
+      <nav class="c-article-nav u-float--r u-relative">
+        <h2 class="c-article-nav__title">Knowledgebase</h2>
+        <ul class="c-article-nav__list">
+          <li class="u-relative">
+            <a href="#">Git tutorial</a>
+            <ul>
+              <li><a href="#whatis">So what the heck is Git</a></li>
+              <li><a href="#basic-usage">Basic usage</a></li>
+              <li><a href="#more-stuff">More Stuff</a></li>
+            </ul>
+          </li>
+          <li class="u-relative">
+            <a href="../git-flow/">Git flow</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="c-global-footer"></footer>
+</body>
+
 </html>

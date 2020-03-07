@@ -30,11 +30,9 @@ $yoichipurple: #8546be;
   --c-spot--alt: #18c164;
   --c-spot--text: #0fa954;
   //--c-gradient: linear-gradient(90deg, var(--c-spotlight), var(--c-limelight));
-  --c-gradient: linear-gradient(
-    90deg,
-    rgba(253, 187, 228, 1) 15%,
-    rgba(43, 185, 192, 1) 100%
-  );
+  --c-gradient: linear-gradient(90deg,
+      rgba(253, 187, 228, 1) 15%,
+      rgba(43, 185, 192, 1) 100%);
 }
 
 /* mixins */
@@ -91,6 +89,7 @@ $yoichipurple: #8546be;
 /* utilities */
 
 .u-of {
+
   //overflow
   &--h {
     overflow: hidden !important;
@@ -470,6 +469,7 @@ $yoichipurple: #8546be;
 
 // bigpad
 .o-bp-one {
+
   &-whole,
   &-half,
   &-quarter {
@@ -1012,7 +1012,7 @@ body {
   &__list {
     margin-top: 15px;
 
-    > li {
+    >li {
       margin-top: 10px;
       padding-left: 1em;
 
@@ -1044,9 +1044,11 @@ body {
 
       ul li {
         padding: 2px 0;
+
         &::before {
           content: "- ";
         }
+
         &:last-child {
           padding-bottom: 0;
         }
@@ -1155,11 +1157,11 @@ body[current-page="kb"] .c-dir-list.pages .loc:before {
     opacity: 0;
 
     &:checked {
-      + .faqlist__el--q:after {
+      +.faqlist__el--q:after {
         @include transform(rotate(90deg));
       }
 
-      ~ .faqlist__el--a {
+      ~.faqlist__el--a {
         max-height: none;
         padding: 12px;
       }
@@ -1176,11 +1178,11 @@ body[current-page="kb"] .c-dir-list.pages .loc:before {
   }
 }
 
-body[current-page="git-tutorial"] .c-article-nav ul > li:first-child {
+body[current-page="git-tutorial"] .c-article-nav ul>li:first-child {
   @extend %article-pagenav;
 }
 
-body[current-page="faq"] .c-article-nav ul > li:nth-child(5) {
+body[current-page="faq"] .c-article-nav ul>li:nth-child(5) {
   @extend %article-pagenav;
 }
 
