@@ -23,13 +23,17 @@
     <link href="https://iamdeja.github.io/yuuto-bot" rel="canonical" />
     <!-- platforms -->
     <meta content="#ffffff" name="theme-color" />
+    <!-- Scripts -->
+    <!--script defer="defer" src="../../media/scripts/main.js"></script-->
+    <script src="https://cdn.jsdelivr.net/npm/@gitgraph/js"></script>
   </head>
 
   <body
-    class="home t-natsumi"
-    current-page="tutorial"
+    class="home t-yuuto"
+    current-page="git-tutorial"
     subcategory="knowledgebase"
   >
+    <!-- No progress tracker -->
     <!-- Header -->
     <header class="c-gh u-relative u-fit--w u-of--h">
       <div class="u-wrapper u-margin--c u-padding-24-90--h">
@@ -87,7 +91,7 @@
           <h1 class="artic-title">Git gud</h1>
         </header>
         <article class="c-article u-inline-block">
-          <h3>So what the heck is Git</h3>
+          <h3 id="whatis">So what the heck is Git</h3>
           <p>
             Git is the most popular version control system (VCS) out there. In
             very general terms, a VCS is a system that keeps track of files and
@@ -120,7 +124,7 @@
             >. Once you have your shiny copy of git, let's get started with
             using it.
           </p>
-          <h3>How to use it</h3>
+          <h3 id="basic-usage">Basic usage</h3>
           <p>
             Git may seem scary at first and you may think it's all about command
             line interfaces (CLI) and you gotta remember stuff. Luckily that
@@ -173,17 +177,33 @@
             but all main git host platforms have their easy to follow guides on
             how to set up these keys.
           </p>
-          <h4>Letting git know</h4>
+          <h4>Git isn't a spy</h4>
           <p>
-            Git doesn't track your files by default. You can tell git to watch a
-            file using <code>git add &ltfilename&gt</code> or
-            <code>git add .</code> to add everything in the directory to the
-            watchlist.
+            Git isn't watching your files by default, which means it doesn't
+            track changes to your files unless you tell it to. If you want git
+            to know about your files, you need to add them to the
+            <em>Index</em>, commonly known as staging area. There, git stores
+            the cumulative changes made to the file since the last checkpoint in
+            git's history.
           </p>
           <p>
-            Git tracking your files doesn't mean every time you save your file
-            the change gets stored (like OneDrive for example). To make git save
-            the relevant state of your files, you use the
+            Since you wouldn't want to record every single time you save a file,
+            as not every save is a meaningful step in your project, files in the
+            staging area aren't stored in the git history (Index has its own
+            temporary history). When your files reach a state that you would
+            like to record, you <em>commit</em> these files. Committing the
+            files saves the staged changes to the git history, where they will
+            stay for good.
+          </p>
+          <h4>Letting git know</h4>
+          <p>
+            You can tell git to watch a file using
+            <code>git add &ltfilename&gt</code> or <code>git add .</code> to add
+            everything in the directory to the watchlist.
+          </p>
+          <p>
+            Again, since since git doesn't update its history on each file save
+            (like OneDrive for example) you commit your changes using the
             <code>git commit -m "Commit message"</code> command. This saves the
             changes with the message you have set.
           </p>
@@ -209,11 +229,37 @@
             name multiple remote repositories such as "upstream", but that falls
             out of the basics.
           </p>
+          <h4>Getting updates</h4>
+          <p>
+            Sometimes the remote repository gets updated as you are working on
+            the local copy. In that case you can update your local copy using
+            <code>git pull</code>. When you pull, you tell git to
+            <em>fetch</em> files and <em>merge</em> them.
+          </p>
+          <p>
+            Sometimes conflicts happen when git is trying to merge files into
+            your local repository. Such issue may also happen when you are
+            pushing into a repository. What to do in these cases is a topic for
+            <a href="#merging">later</a>.
+          </p>
+          <h3 id="more-stuff">More stuff</h3>
+          <h4>Branching</h4>
+          <h4 id="merging">Merging</h4>
+          <h4>Logging</h4>
+          <h4>Tagging</h4>
+          <h4>Signing</h4>
         </article>
         <nav class="c-article-nav u-float--r u-relative">
           <h2 class="c-article-nav__title">Knowledgebase</h2>
           <ul class="c-article-nav__list">
-            <li class="u-relative"><a href="">Git tutorial</a></li>
+            <li class="u-relative">
+              <a href="#">Git tutorial</a>
+              <ul>
+                <li><a href="#whatis">So what the heck is Git</a></li>
+                <li><a href="#basic-usage">Basic usage</a></li>
+                <li><a href="#more-stuff">More Stuff</a></li>
+              </ul>
+            </li>
             <li class="u-relative">
               <a href="../git-flow/">Git flow</a>
             </li>

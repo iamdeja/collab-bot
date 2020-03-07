@@ -18,32 +18,23 @@ $hunteryellow: #edc92b;
 $yoichipurple: #8546be;
 
 /* themes */
-.t-keitaro {
+.t-yuuto {
   --c-text: #1b2a3d;
   --c-bg: #fff;
   --c-spot: #18c164;
-  --c-text--reverse: #1b2a3d;
-  --c-bg--reverse: #22d278;
+  --c-spotlight: #fdbbe4;
+  --c-limelight: #2bb9c0;
+  --c-text--reverse: #717485;
+  --c-bg--reverse: #f5f5f5;
   --c-spot--reverse: #fff;
   --c-spot--alt: #18c164;
   --c-spot--text: #0fa954;
-  --c-gradient: linear-gradient(90deg, #22d278, #025fff);
-}
-
-.t-hiro {
-  --t-spotlight: #ff9222;
-}
-
-.t-natsumi {
-  --t-spotlight: $natsumiblue;
-}
-
-.t-yoichi {
-  --t-spotlight: $yoichipurple;
-}
-
-.t-hunter {
-  --t-spotlight: $hunteryellow;
+  //--c-gradient: linear-gradient(90deg, var(--c-spotlight), var(--c-limelight));
+  --c-gradient: linear-gradient(
+    90deg,
+    rgba(253, 187, 228, 1) 15%,
+    rgba(43, 185, 192, 1) 100%
+  );
 }
 
 /* mixins */
@@ -523,7 +514,6 @@ html {
 
 body {
   font-family: sans-serif;
-  font-size: 16px;
   font-size: 1rem;
   font-style: normal;
   line-height: 1.25;
@@ -532,8 +522,7 @@ body {
   width: 100%;
   min-height: 100%;
   color: $bodytext;
-  background: 0 0;
-  background-color: $bodybg;
+  background: $bodybg 0 0;
   direction: ltr;
 }
 
@@ -696,19 +685,16 @@ h6 {
 }
 
 h1 {
-  font-size: 40px;
   font-size: 2.5rem;
   line-height: 1.111;
 }
 
 h2 {
-  font-size: 32px;
   font-size: 2rem;
   line-height: 1.125;
 }
 
 h3 {
-  font-size: 24px;
   font-size: 1.5rem;
   line-height: 1.166;
 }
@@ -717,7 +703,7 @@ code {
   font-family: monospace;
   padding: 2px 3px;
   border-radius: 2px;
-  background-color: #eee;
+  background-color: var(--c-bg--reverse);
 }
 
 .t-nowrap {
@@ -728,6 +714,18 @@ code {
 
 body {
   overflow-y: auto;
+}
+
+::selection {
+  background-color: rgba(43, 185, 192, 0.1);
+}
+
+#progressbar {
+  position: sticky;
+  top: 0;
+  height: 5px;
+  width: 0;
+  background: var(--c-gradient);
 }
 
 .c-cta,
@@ -742,7 +740,6 @@ body {
 .c-button {
   font-size: 16px;
   font-weight: 700;
-  font-weight: 1rem;
   line-height: 1.25;
   padding: 8px 16px;
   -webkit-transition: background-color 0.1s;
@@ -752,7 +749,7 @@ body {
   background-color: transparent;
 
   &:hover {
-    background-color: var(--t-spotlight);
+    background-color: var(--c-limelight);
   }
 }
 
@@ -795,9 +792,9 @@ body {
       border-radius: 2px;
 
       &:hover {
-        color: #d59120;
-        border-color: white;
-        background-color: #f5f5f5;
+        color: var(--c-limelight);
+        border-color: #fff;
+        background-color: var(--c-bg--reverse);
       }
     }
   }
@@ -832,8 +829,7 @@ body {
         }
 
         a:hover {
-          color: var(--t-spotlight);
-          border-bottom: 1px solid var(--t-spotlight);
+          border-bottom: 4px solid var(--c-spotlight);
         }
       }
     }
@@ -883,7 +879,6 @@ body {
     }
 
     .sect-subtitle {
-      font-size: 21px;
       font-size: 1.3125rem;
       line-height: 1.143;
       margin-bottom: 32px;
@@ -908,7 +903,6 @@ body {
   }
 
   &-title {
-    font-size: 48px;
     font-size: 3rem;
     line-height: 1.083;
     margin-bottom: 48px;
@@ -977,11 +971,15 @@ body {
   }
 
   a {
-    border-bottom: 1px solid var(--t-spotlight);
+    border-bottom: 1px solid var(--c-spotlight);
 
     &:hover {
-      color: var(--t-spotlight);
+      color: var(--c-spotlight);
     }
+  }
+
+  em {
+    background-color: rgba(43, 185, 192, 0.1);
   }
 
   p,
@@ -997,13 +995,14 @@ body {
 
 .c-article-nav {
   width: 100%;
+  top: 35px;
+  position: sticky;
 
   @media only screen and (min-width: $dtbreak) {
     width: 300px;
   }
 
   &__title {
-    font-size: 16px;
     font-size: 1rem;
     line-height: 1.083;
     padding-bottom: 3px;
@@ -1013,7 +1012,7 @@ body {
   &__list {
     margin-top: 15px;
 
-    li {
+    > li {
       margin-top: 10px;
       padding-left: 1em;
 
@@ -1021,12 +1020,13 @@ body {
         margin-top: 0;
       }
 
-      &:before {
+      &::before {
         position: absolute;
 
-        @extend .u-pos-y-center;
+        //@extend .u-pos-y-center;
 
         left: 0;
+        top: 0.5rem;
         width: 4px;
         height: 4px;
         content: "";
@@ -1035,10 +1035,20 @@ body {
 
       a {
         // check compatibility
-        @include box-shadow(0 -1px var(--t-spotlight) inset);
+        //@include box-shadow(0 -1px var(--c-spotlight) inset);
 
         &:hover {
-          color: var(--t-spotlight);
+          color: var(--c-spotlight);
+        }
+      }
+
+      ul li {
+        padding: 2px 0;
+        &::before {
+          content: "- ";
+        }
+        &:last-child {
+          padding-bottom: 0;
         }
       }
     }
@@ -1082,79 +1092,6 @@ body {
 
 body[current-page="kb"] .c-dir-list.pages .loc:before {
   content: "kb /";
-}
-
-// == PLAYERCARDS == //
-
-.c-playercard__inner {
-  padding: 0 20px 30px;
-  border-radius: 5px;
-  background-color: #f6f7fb;
-
-  h4 {
-    padding-top: 10px;
-
-    @include transform(translate3d(0, 20px, 0));
-
-    -webkit-transition: -webkit-transform 0.35s ease;
-    transition: -webkit-transform 0.35s ease;
-    transition: transform 0.35s ease;
-    transition: transform 0.35s ease, -webkit-transform 0.35s ease;
-  }
-
-  span {
-    min-height: 50px;
-    margin: 18px 0;
-    -webkit-transition: all 0.35s ease;
-
-    @include transform(translate3d(0, -5px, 0));
-
-    transition: all 0.35s ease;
-    opacity: 0;
-    color: $lightertext;
-  }
-
-  p {
-    margin-top: 20px;
-  }
-}
-
-.c-playercard__outer:hover {
-  h4,
-  span {
-    @include transform(translateZ(0));
-  }
-
-  span {
-    opacity: 1;
-  }
-}
-
-/* == RULES PAGE == */
-
-.c-rulepage .c-article {
-  p {
-    text-indent: 0;
-  }
-
-  .ruleslist {
-    &__rule {
-      padding-bottom: 20px;
-
-      &--title {
-        padding-bottom: 4px;
-
-        span {
-          margin-right: 4px;
-          padding-right: 4px;
-          padding-left: 4px;
-          color: white;
-          border-radius: 2px;
-          background-color: $bodytext;
-        }
-      }
-    }
-  }
 }
 
 /* == FAQ PAGE == */
@@ -1232,19 +1169,18 @@ body[current-page="kb"] .c-dir-list.pages .loc:before {
 
 /* == ARTICLE pagenav == */
 %article-pagenav {
-  pointer-events: none;
-  color: $lightertext;
+  color: var(--c-text--reverse);
 
   a {
     @include box-shadow(none);
   }
 }
 
-body[current-page="rules"] .c-article-nav li:first-child {
+body[current-page="git-tutorial"] .c-article-nav ul > li:first-child {
   @extend %article-pagenav;
 }
 
-body[current-page="faq"] .c-article-nav li:nth-child(5) {
+body[current-page="faq"] .c-article-nav ul > li:nth-child(5) {
   @extend %article-pagenav;
 }
 
